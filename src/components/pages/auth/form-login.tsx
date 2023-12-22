@@ -1,17 +1,11 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { useGoogleLogin } from "@react-oauth/google";
+import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
 const FormLogin = () => {
   const router = useRouter();
-
-  const handleLogin = useGoogleLogin({
-    onSuccess: (tokenResponse) => console.log(tokenResponse),
-    onError: (error) => console.log(error),
-    flow: "auth-code",
-  });
 
   return (
     <form action="" className="w-full sm:w-1/2 md:w-1/3 p-4 border rounded-md">
@@ -35,19 +29,10 @@ const FormLogin = () => {
           className="w-full"
           type="button"
           variant={"outline"}
-          onClick={handleLogin}
+          onClick={() => signIn("google", { callbackUrl: "/", redirect: true })}
         >
           Login with Google
         </Button>
-        {/* <GoogleLogin
-          onSuccess={(credentialResponse) => {
-            console.log(credentialResponse);
-          }}
-          onError={() => {
-            console.log("Login Failed");
-          }}
-        /> */}
-        {/* <GoogleSignInButton /> */}
         <Button type="submit" className="w-full">
           Login
         </Button>

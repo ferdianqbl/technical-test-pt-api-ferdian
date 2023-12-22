@@ -4,27 +4,30 @@ import GoogleProvider from "next-auth/providers/google";
 const authOptions: AuthOptions = {
   providers: [
     GoogleProvider({
-      clientId: "",
-      clientSecret: "",
+      clientId: process.env.GOOGLE_CLIENT_ID || "",
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET || "",
     }),
   ],
   callbacks: {
-    async signIn({ user, account, profile }) {
-      const response = await fetch(
-        "https://api.goprestasi.com/api/login/google"
-      );
-      const data = await response.json();
-
-      if (!response.ok || data.error || !data.url) {
-        return Promise.resolve(false);
+    async jwt({ token, user, account, profile }: any) {
+      if (account?.provider === "google") {
+        token = {
+          ...token,
+          ...user,
+        };
       }
-
-      window.location = data.url; // Redirect to Google login URL
-      return Promise.resolve(false); // Return false to prevent default behavior
+      return token;
     },
-    async redirect({ url, baseUrl }) {
-      return baseUrl;
+    async session({ session, token }: any) {
+      session = {
+        ...session,
+        ...token,
+      };
+      return session;
     },
+  },
+  pages: {
+    signIn: "/login",
   },
 };
 
