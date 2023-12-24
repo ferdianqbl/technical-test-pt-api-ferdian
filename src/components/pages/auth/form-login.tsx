@@ -2,14 +2,14 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { signIn } from "next-auth/react";
-import { useRouter } from "next/navigation";
 
 const FormLogin = () => {
-  const router = useRouter();
-
   return (
     <form action="" className="w-full sm:w-1/2 md:w-1/3 p-4 border rounded-md">
-      <h1 className="text-center">Login</h1>
+      <h1 className="text-center mb-2 text-2xl font-bold">Login</h1>
+      <h1 className="text-center mb-8 text-sm text-gray-400">
+        Login with your email and password or login with Google
+      </h1>
       <div className="flex flex-col w-full gap-3 items-center justify-center mb-4">
         <Input
           type="email"
