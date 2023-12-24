@@ -13,6 +13,7 @@ Sebagai gantinya, saya mencoba untuk menggunakan proses authentikasi menggunakan
 3. Melakukan refactoring desain menggunakan Tailwind dan pembuatan _component based_. Seluruh komponen berada di folder **components**
 
 > **ui** adalah folder untuk komponen terkecil
+
 > **pages** adalah folder untuk komponen pada setiap halaman
 
 > **(auth)** adalah folder yang berisi route yang dapat diakses user apabila user **belum** login dan tidak dapat diakses ketika user **sudah** login. Folder ini berisi halaman Login.
