@@ -5,8 +5,8 @@ export default async function Home() {
   return (
     <main className="">
       <Navbar />
-      <div className="container py-4">
-        <h1 className="text-3xl font-bold text-center mt-8">
+      <div className="container py-8">
+        <h1 className="text-3xl font-bold text-center">
           Welcome to <span className="text-blue-500">Anime</span> World
         </h1>
         <small className="text-gray-500 text-center block mb-8">
