@@ -6,10 +6,14 @@ Terima kasih atas kesempatan yang diberikan untuk dapat berada pada tahap seleks
 - Tidak dapat menghandle callback dari google login. Saya terus mencoba mencari cara untuk menghandlenya, tetapi belum dapat saya temukan hingga saat ini. Error yang muncul adalah 404 atau halaman tidak ditemukan.
 - Tidak dapat menggunakan API lainnya karena handle callback google yang tidak dapat dilakukan.
 
-Sebagai gantinya, saya mencoba untuk menggunakan proses authentikasi menggunakan Next Auth. Langkah ini saya lakukan untuk tetap mengerjakan tugas pada poin - poin yang lain. Secara umum pengerjaan saya adalah sebagai berikut:
+Sebagai gantinya, saya mencoba untuk menggunakan proses authentikasi menggunakan Next Auth dan Google Client sendiri. Selain itu, untuk callback menggunakan route `http://localhost:3000/api/auth/callback/google`. Langkah ini saya lakukan untuk tetap mengerjakan tugas pada poin - poin yang lain. Secara umum pengerjaan saya adalah sebagai berikut:
 
 1. Pembuatan Login dengan google
 2. Proteksi halaman sesuai dengan aturan.
+3. Melakukan refactoring desain menggunakan Tailwind dan pembuatan _component based_. Seluruh komponen berada di folder **components**
+
+> **ui** adalah folder untuk komponen terkecil
+> **pages** adalah folder untuk komponen pada setiap halaman
 
 > **(auth)** adalah folder yang berisi route yang dapat diakses user apabila user **belum** login dan tidak dapat diakses ketika user **sudah** login. Folder ini berisi halaman Login.
 
