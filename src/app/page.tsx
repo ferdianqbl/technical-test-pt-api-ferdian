@@ -12,6 +12,11 @@ export default async function Home() {
         <small className="text-gray-500 text-center block mb-8">
           You can find all anime here and know more about it. Enjoy!
         </small>
+
+        <h2 className="text-xl font-bold mb-2">Top Anime</h2>
+        <small className="text-gray-500 mb-4 block">
+          This is a list of the top 10 anime.
+        </small>
         <ListAnime />
       </div>
     </main>
