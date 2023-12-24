@@ -1,7 +1,10 @@
 import Link from "next/link";
-import AuthButton from "./auth-button";
+import Profile from "./profile";
+import { getServerSession } from "next-auth";
+import authOptions from "@/lib/next-auth/options";
 
 const Navbar = async () => {
+  const session = await getServerSession(authOptions);
   return (
     <nav className="bg-primary">
       <div className="container flex justify-between items-center py-2">
@@ -13,7 +16,12 @@ const Navbar = async () => {
             Profile
           </Link>
         </div>
-        <AuthButton />
+        {!session && (
+          <Link href="/login" className="text-white">
+            Login
+          </Link>
+        )}
+        <Profile />
       </div>
     </nav>
   );

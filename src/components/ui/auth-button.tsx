@@ -13,7 +13,11 @@ const AuthButton = () => {
       </Link>
     );
   else if (status === "authenticated")
-    return <Button onClick={() => signOut()}>Logout</Button>;
+    return (
+      <Button onClick={() => signOut()} variant={"outline"} className="w-full">
+        Logout
+      </Button>
+    );
 
   return null;
 };
