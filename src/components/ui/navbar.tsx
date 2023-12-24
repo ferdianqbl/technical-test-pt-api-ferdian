@@ -12,8 +12,8 @@ const Navbar = async () => {
           <Link href="/" className="text-white">
             Home
           </Link>
-          <Link href="/profile" className="text-white">
-            Profile
+          <Link href="/list" className="text-white">
+            List Anime
           </Link>
         </div>
         {!session && (

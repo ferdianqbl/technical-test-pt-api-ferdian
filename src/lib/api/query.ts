@@ -1,4 +1,4 @@
-const URL = `https://api.jikan.moe/v4/top/anime`;
+const URL = `https://api.jikan.moe/v4`;
 
 export type AnimeTopResponse = {
   pagination: AnimeTopResponsePagination | undefined;
@@ -43,11 +43,24 @@ export const getAllData = async ({
   page,
 }: getAllDataProps): Promise<AnimeTopResponse> => {
   try {
-    const response = await fetch(`${URL}?page=${page}&limit=${limit}`);
+    const response = await fetch(
+      `${URL}/top/anime?page=${page}&limit=${limit}`
+    );
     const data: AnimeTopResponse = await response.json();
     return data;
   } catch (error) {
     console.log(error);
     return { data: [], pagination: undefined };
+  }
+};
+
+export const getDataById = async (id: number) => {
+  try {
+    const response = await fetch(`${URL}/anime/${id}/full`);
+    const data: { data: AnimeTopResponseData } = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+    return { data: null };
   }
 };

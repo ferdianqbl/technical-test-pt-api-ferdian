@@ -27,12 +27,12 @@ const ListAnime = () => {
     setData(res?.data || []);
     setPage(res?.pagination?.current_page || 1);
     setPaginationData(res?.pagination || null);
-    console.log({ res });
     setLoading(false);
   };
 
   useEffect(() => {
     fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page]);
 
   if (loading)
@@ -85,6 +85,40 @@ const ListAnime = () => {
         {data?.map((item) => (
           <ListCard data={item} key={item.mal_id} />
         ))}
+      </div>
+      <div className="flex items-center justify-between">
+        <p className="text-sm">
+          page {page} of {paginationData?.last_visible_page}
+        </p>
+        <div className="flex flex-center justify-center gap-2">
+          {page >= 1 && (
+            <Button variant={"ghost"} onClick={() => setPage(1)}>
+              <ChevronsUp className="-rotate-90 w-4 h-4" />
+            </Button>
+          )}
+
+          {page - 1 >= 1 && (
+            <Button variant={"ghost"} onClick={() => setPage(page - 1)}>
+              {page - 1}
+            </Button>
+          )}
+          <p className="h-10 px-4 py-2 inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background bg-accent text-accent-foreground">
+            {page}
+          </p>
+          {page + 1 <= paginationData?.last_visible_page! && (
+            <Button variant={"ghost"} onClick={() => setPage(page + 1)}>
+              {page + 1}
+            </Button>
+          )}
+          {paginationData?.last_visible_page! >= page + 1 && (
+            <Button
+              variant={"ghost"}
+              onClick={() => setPage(paginationData?.last_visible_page || 1)}
+            >
+              <ChevronsUp className="rotate-90 w-4 h-4" />
+            </Button>
+          )}
+        </div>
       </div>
     </div>
   );
