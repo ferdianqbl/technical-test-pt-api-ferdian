@@ -1,19 +1,19 @@
 const URL = `https://api.jikan.moe/v4/top/anime`;
 
 export type AnimeTopResponse = {
-  pagination:
-    | {
-        last_visible_page: number | undefined;
-        has_next_page: boolean;
-        current_page: number | undefined;
-        items: {
-          count: number | undefined;
-          total: number | undefined;
-          per_page: number | undefined;
-        };
-      }
-    | undefined;
+  pagination: AnimeTopResponsePagination | undefined;
   data: AnimeTopResponseData[] | [];
+};
+
+export type AnimeTopResponsePagination = {
+  last_visible_page: number | undefined;
+  has_next_page: boolean;
+  current_page: number | undefined;
+  items: {
+    count: number | undefined;
+    total: number | undefined;
+    per_page: number | undefined;
+  };
 };
 
 export type AnimeTopResponseData = {
